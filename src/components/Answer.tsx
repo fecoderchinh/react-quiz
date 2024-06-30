@@ -9,16 +9,16 @@ const Answer: FC<AnswerProps> = memo(({ onChange, options, selectedValue, name }
    return (
       <div>
          {options.map((option) => (
-            <div key={option}>
+            <div key={option.index}>
                <input
                   type="radio"
-                  id={option}
+                  id={option.index}
                   name={name}
-                  value={option}
-                  checked={selectedValue === option}
+                  value={option.index}
+                  checked={selectedValue === option.index}
                   onChange={handleChange}
                />
-               <label htmlFor={option}>{option}</label>
+               <label htmlFor={option.index}>{option.answer}</label>
             </div>
          ))}
       </div>

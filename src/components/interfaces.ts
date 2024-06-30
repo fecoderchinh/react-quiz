@@ -25,14 +25,31 @@ export interface Response {
    results: ResponseResult[]
 }
 
+export interface ResponseAnswers {
+   index: string,
+   is_corrected: boolean,
+   answer: string
+}
+
+export interface FilteredResponse {
+   category: string
+   correct_answer: string
+   difficulty: string
+   incorrect_answers: string[]
+   question: string
+   type: string
+   answers: ResponseAnswers[]
+}
+
 export interface InlineFormProps {
    onClick: (value: SelectedProps) => void
 }
 
 export interface QuestionProps {
    questionText: string;
-   options: string[];
+   options: ResponseAnswers[];
    name: string;
+   onChange: (value: string) => void
 }
 
 export interface QuestionAPIProps {
@@ -41,8 +58,8 @@ export interface QuestionAPIProps {
 }
 
 export interface AnswerProps {
-   options: string[];
+   options: ResponseAnswers[];
    selectedValue: string;
-   onChange: (selectedValue: string) => void;
+   onChange: (value: string) => void;
    name: string
 }
