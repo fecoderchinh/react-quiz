@@ -5,6 +5,7 @@ export interface SelectProps {
    selected: string
    id: string
    onChange: (value: string) => void
+   defaultOption: string
 }
 
 export interface SelectedProps {

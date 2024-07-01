@@ -25,8 +25,10 @@ const InlineForm: FC<InlineFormProps> = memo(({ onClick }) => {
    }
 
    const handleCreate = useCallback(() => {
-      const selected: SelectedProps = { category: selectedCategory, mode: selectedMode }
-      onClick(selected)
+      if (selectedCategory && selectedMode) {
+         const selected: SelectedProps = { category: selectedCategory, mode: selectedMode };
+         onClick(selected);
+      }
    }, [onClick, selectedCategory, selectedMode])
 
    useEffect(() => {
@@ -35,9 +37,6 @@ const InlineForm: FC<InlineFormProps> = memo(({ onClick }) => {
             const response = await fetch('https://opentdb.com/api_category.php');
             const data = await response.json();
             setCategories(data.trivia_categories)
-
-            setSelectedCategory(data.trivia_categories[0].id)
-            setSelectedMode(modes[0].id)
 
          } catch (error) {
             console.error('Error fetching options:', error);
@@ -48,8 +47,8 @@ const InlineForm: FC<InlineFormProps> = memo(({ onClick }) => {
 
    return (
       <>
-         <Select selected={selectedCategory} options={categories} onChange={handleSelectCategory} id='categorySelect' />
-         <Select selected={selectedMode} options={modes} onChange={handleSelectMode} id='difficultySelect' />
+         <Select selected={selectedCategory} options={categories} onChange={handleSelectCategory} id='categorySelect' defaultOption='Select a category' />
+         <Select selected={selectedMode} options={modes} onChange={handleSelectMode} id='difficultySelect' defaultOption='Select difficult' />
          <button id='createBtn' onClick={handleCreate}>Create</button>
       </>
    )
