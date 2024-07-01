@@ -83,3 +83,7 @@ export interface ResultListProps {
    options: ResponseAnswers[];
    selected: string
 }
+
+export interface ErrorPayload {
+   errorMessage: string;
+}

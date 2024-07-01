@@ -1,7 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { FilteredResponse, QuestionAPIProps, ResponseAnswers } from "../components/interfaces";
 import { getQuestions } from "../services";
-import { error, start, success } from "./reducer";
+import { error, start, successAnswers, successQuestions } from "./reducer";
 
 export const listQuestions = ({ category, mode }: QuestionAPIProps) => async (dispatch: Dispatch) => {
    dispatch(start())
@@ -9,27 +9,30 @@ export const listQuestions = ({ category, mode }: QuestionAPIProps) => async (di
       const data = await getQuestions({ category, mode })
       if (data) {
          sessionStorage.setItem('questions', JSON.stringify(data))
-         dispatch(success({ questions: data }))
+         dispatch(successQuestions(data))
       }
    } catch (err) {
-      dispatch(error({ error: err }))
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+      dispatch(error({ errorMessage }));
    }
 }
 
 export const updateQuestions = (questions: FilteredResponse[]) => async (dispatch: Dispatch) => {
    dispatch(start())
    try {
-      dispatch(success({ questions }))
+      dispatch(successQuestions(questions))
    } catch (err) {
-      dispatch(error({ error: err }))
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+      dispatch(error({ errorMessage }));
    }
 }
 
 export const selectAnswers = (answers: ResponseAnswers[]) => async (dispatch: Dispatch) => {
    dispatch(start())
    try {
-      dispatch(success({ answers }))
+      dispatch(successAnswers(answers))
    } catch (err) {
-      dispatch(error({ error: err }))
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+      dispatch(error({ errorMessage }));
    }
 }

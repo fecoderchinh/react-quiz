@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import 'immer'
-import { QuestionReducerInitProps } from '../components/interfaces'
+import { ErrorPayload, FilteredResponse, QuestionReducerInitProps, ResponseAnswers } from '../components/interfaces'
 import { getQuestionStorage } from './sessionStorage'
 import { RootState } from './store'
 
@@ -18,23 +18,30 @@ export const quizQASlice = createSlice({
             isProcessingRequest: true,
          }
       },
-      success: (state, action) => {
+      successQuestions: (state, action: PayloadAction<FilteredResponse[]>) => {
          return {
             ...state,
-            ...action.payload,
+            questions: action.payload,
             isProcessingRequest: false,
          }
       },
-      error: (state, action) => {
+      successAnswers: (state, action: PayloadAction<ResponseAnswers[]>) => {
          return {
             ...state,
-            ...action.payload,
+            answers: action.payload,
+            isProcessingRequest: false,
+         }
+      },
+      error: (state, action: PayloadAction<ErrorPayload>) => {
+         return {
+            ...state,
+            errors: action.payload,
             isProcessingRequest: false,
          }
       },
    },
 })
 
-export const { start, success, error } = quizQASlice.actions
+export const { start, successQuestions, successAnswers, error } = quizQASlice.actions
 export const selectQuestion = (state: RootState) => state.questions
 export const questionReducer = quizQASlice.reducer
