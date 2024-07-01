@@ -26,12 +26,14 @@ export interface Response {
 }
 
 export interface ResponseAnswers {
+   group: number
    index: string,
    is_corrected: boolean,
    answer: string
 }
 
 export interface FilteredResponse {
+   group: number
    category: string
    correct_answer: string
    difficulty: string
@@ -39,6 +41,7 @@ export interface FilteredResponse {
    question: string
    type: string
    answers: ResponseAnswers[]
+   is_selected: string
 }
 
 export interface InlineFormProps {
@@ -62,4 +65,9 @@ export interface AnswerProps {
    selectedValue: string;
    onChange: (value: string) => void;
    name: string
+}
+
+export interface QuestionReducerInitProps {
+   questions: FilteredResponse[]
+   answers: ResponseAnswers[]
 }
