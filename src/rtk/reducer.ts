@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import 'immer'
 import { QuestionReducerInitProps } from '../components/interfaces'
+import { getQuestionStorage } from './sessionStorage'
 import { RootState } from './store'
 
 export const initialState: QuestionReducerInitProps = {
-   questions: [],
+   questions: getQuestionStorage(),
    answers: []
 }
 export const quizQASlice = createSlice({

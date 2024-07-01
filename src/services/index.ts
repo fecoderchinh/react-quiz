@@ -1,3 +1,3 @@
-export { getQuestion, getQuestions } from "./getQuestions";
+export { countAnswers, getQuestion, getQuestions, shuffleAnswers } from "./getQuestions";
 export { getAnswer, getAnswerIndex, replaceAnswers } from "./handleAnswers";
 

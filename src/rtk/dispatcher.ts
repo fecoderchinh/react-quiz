@@ -8,6 +8,7 @@ export const listQuestions = ({ category, mode }: QuestionAPIProps) => async (di
    try {
       const data = await getQuestions({ category, mode })
       if (data) {
+         sessionStorage.setItem('questions', JSON.stringify(data))
          dispatch(success({ questions: data }))
       }
    } catch (err) {

@@ -1,7 +1,7 @@
 import { ResponseAnswers } from "../components/interfaces";
 
 export const getAnswerIndex = (currentAnswers: ResponseAnswers[], value: string) => {
-   const getFirstChar = value.split('')[0]   
+   const getFirstChar = value.split('')[0]
    return currentAnswers.findIndex(ans => ans.group === Number(getFirstChar))
 }
 

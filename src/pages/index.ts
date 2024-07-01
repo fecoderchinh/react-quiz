@@ -1,5 +1,8 @@
-import Quiz from "./Quiz";
+import PageQuiz from "./PageQuiz";
+import PageResults from "./PageResults";
 
 export {
-   Quiz
+   PageQuiz,
+   PageResults
 };
+

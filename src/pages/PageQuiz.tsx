@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../rtk/hooks";
 import { selectQuestion } from "../rtk/reducer";
 import { getAnswerIndex } from "../services";
 
-const Quiz = memo(() => {
+const PageQuiz = memo(() => {
    const dispatch = useAppDispatch()
    const questionSelector = useAppSelector(selectQuestion)
    const navigate = useNavigate();
@@ -58,6 +58,7 @@ const Quiz = memo(() => {
             })
 
             dispatch(updateQuestions(updatedQuestions))
+            sessionStorage.setItem('questions', JSON.stringify(updatedQuestions))
          }
       }
    }, [dispatch, questionSelector.answers, questionSelector.questions])
@@ -78,9 +79,9 @@ const Quiz = memo(() => {
                onChange={handleSelectedAnswers}
             />
          ))}
-         {answers.length === 5 && <button onClick={handleSubmitResult}>Submit</button>}
+         {answers.length === 5 && <button className="submit-button" onClick={handleSubmitResult}>Submit</button>}
       </>
    )
 })
 
-export default Quiz
+export default PageQuiz

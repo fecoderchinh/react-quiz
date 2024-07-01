@@ -3,6 +3,7 @@ export interface SelectOptions { name: string; id: string }
 export interface SelectProps {
    options: SelectOptions[]
    selected: string
+   id: string
    onChange: (value: string) => void
 }
 
@@ -70,4 +71,15 @@ export interface AnswerProps {
 export interface QuestionReducerInitProps {
    questions: FilteredResponse[]
    answers: ResponseAnswers[]
+}
+
+export interface ResultProps {
+   options: ResponseAnswers[];
+   selected: string
+}
+
+export interface ResultListProps {
+   questionText: string;
+   options: ResponseAnswers[];
+   selected: string
 }

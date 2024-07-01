@@ -40,3 +40,92 @@
 .read-the-docs {
   color: #888;
 }
+
+.correct {
+  background: green;
+}
+
+.incorrect,
+.selected {
+  background: red;
+}
+
+button,
+select {
+  border-radius: 0 !important;
+  border: 0 none;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  outline: none;
+}
+
+.label {
+  width: 100%;
+}
+.label > div {
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.label > div:hover {
+  background: green;
+}
+.label > div > input {
+  display: none;
+}
+.label > div > label {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid green;
+  display: inline-block;
+}
+
+.active {
+  background: green;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  margin: 10px;
+}
+
+.question {
+  text-align: left;
+}
+
+.correct,
+.selected,
+.incorrect,
+.default-result {
+  padding: 10px;
+  border: 1px solid green;
+}
+
+.label-result > div {
+  display: inline-block;
+  margin: 10px;
+}
+
+.result-count {
+  display: block;
+  width: 100%;
+  background: black;
+  padding: 10px;
+  color: black;
+}
+
+.result-count.red {
+  background: red;
+}
+.result-count.yellow {
+  background: yellow;
+}
+.result-count.green {
+  background: green;
+}

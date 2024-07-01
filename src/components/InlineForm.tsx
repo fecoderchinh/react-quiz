@@ -48,9 +48,9 @@ const InlineForm: FC<InlineFormProps> = memo(({ onClick }) => {
 
    return (
       <>
-         <Select selected={selectedCategory} options={categories} onChange={handleSelectCategory} />
-         <Select selected={selectedMode} options={modes} onChange={handleSelectMode} />
-         <button onClick={handleCreate}>Create</button>
+         <Select selected={selectedCategory} options={categories} onChange={handleSelectCategory} id='categorySelect' />
+         <Select selected={selectedMode} options={modes} onChange={handleSelectMode} id='difficultySelect' />
+         <button id='createBtn' onClick={handleCreate}>Create</button>
       </>
    )
 })

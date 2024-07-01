@@ -11,7 +11,7 @@ const Question: FC<QuestionProps> = memo(({ questionText, options, name, onChang
    };
 
    return (
-      <div>
+      <div className="question">
          <h2>{questionText}</h2>
          <Answer options={options} selectedValue={selectedValue} onChange={handleAnswerChange} name={name} />
       </div>
