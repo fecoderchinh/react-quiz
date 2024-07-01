@@ -18,6 +18,9 @@ const PageQuiz = memo(() => {
    const handleDataQuestions = useCallback(async (data: SelectedProps) => {
 
       const param: QuestionAPIProps = { category: data.category, mode: data.mode }
+      dispatch(updateQuestions([]))
+      sessionStorage.setItem('questions', '')
+      setAnswers([])
       dispatch(listQuestions(param))
 
    }, [dispatch])
