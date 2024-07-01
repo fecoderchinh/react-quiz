@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Results } from "../components";
+import { REACT_BASE } from "../rtk/constants";
 import { updateQuestions } from "../rtk/dispatcher";
 import { useAppDispatch, useAppSelector } from "../rtk/hooks";
 import { selectQuestion } from "../rtk/reducer";
@@ -14,11 +15,12 @@ const PageResults = memo(() => {
    const handleNewQuiz = useCallback(() => {
       sessionStorage.setItem('questions', '')
       dispatch(updateQuestions([]))
-      navigate('/')
+      navigate(REACT_BASE)
    }, [dispatch, navigate])
 
    const countResult = useMemo(() => {
       return countAnswers(questionSelector.questions)
+   // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    const handleBottomColor = useCallback((count: number) => {
@@ -36,6 +38,7 @@ const PageResults = memo(() => {
    }, [])
    return (
       <>
+      <h2>RESULTS</h2>
          {
             questionSelector?.questions.map((question, index) => (
                <Results

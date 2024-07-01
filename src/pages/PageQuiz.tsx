@@ -2,6 +2,7 @@ import { memo, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InlineForm, Question } from "../components";
 import { QuestionAPIProps, SelectedProps } from "../components/interfaces";
+import { REACT_RESULT } from "../rtk/constants";
 import { listQuestions, updateQuestions } from "../rtk/dispatcher";
 import { useAppDispatch, useAppSelector } from "../rtk/hooks";
 import { selectQuestion } from "../rtk/reducer";
@@ -64,11 +65,12 @@ const PageQuiz = memo(() => {
    }, [dispatch, questionSelector.answers, questionSelector.questions])
 
    const handleSubmitResult = useCallback(() => {
-      navigate('/result')
+      navigate(REACT_RESULT)
    }, [navigate])
 
    return (
       <>
+         <h2>QUIZ MAKER</h2>
          <InlineForm onClick={handleDataQuestions} />
          {questionSelector?.questions.map((question, index) => (
             <Question
