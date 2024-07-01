@@ -29,30 +29,30 @@ const PageQuiz = memo(() => {
       const checkIndex = getAnswerIndex(questionSelector.answers, value)
       const groupIndex = value.split('')[0]
       if (checkIndex === -1) {
-         const question = questionSelector.questions.find(q => q.group === Number(groupIndex))
+         const question = questionSelector.questions.find(questionData => questionData.group === Number(groupIndex))
          if (question) {
-            const updatedQuestions = questionSelector.questions.map(q => {
-               if (q.group === Number(groupIndex)) {
+            const updatedQuestions = questionSelector.questions.map(updateQuestion => {
+               if (updateQuestion.group === Number(groupIndex)) {
                   return {
                      ...question,
                      is_selected: value
                   }
                } else {
                   return {
-                     ...q
+                     ...updateQuestion
                   }
                }
             })
 
             setAnswers(prev => {
 
-               const prevIndex = prev.findIndex(ans => ans.group === groupIndex)
+               const prevIndex = prev.findIndex(answer => answer.group === groupIndex)
                if (prevIndex !== -1) {
-                  prev.map(ans => {
-                     if (ans.group === groupIndex) {
-                        ans.value = value
+                  prev.map(answer => {
+                     if (answer.group === groupIndex) {
+                        answer.value = value
                      }
-                     return ans
+                     return answer
                   })
                   return prev
                } else {
